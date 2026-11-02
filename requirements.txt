@@ -1,0 +1,13 @@
+# Minimal dependencies; original experiment versions were not preserved.
+numpy
+pandas
+scikit-learn
+catboost
+xgboost
+lightgbm
+pytabkit
+torch
+matplotlib
+seaborn
+ipython
+jupyterlab

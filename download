@@ -1,0 +1,32 @@
+# Kaggle data and generated artefacts
+/data/raw/
+/submissions/
+/outputs/
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.joblib
+*.pt
+*.pth
+*.ckpt
+
+# Python and Jupyter
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Credentials and local config
+.env
+.env.*
+!.env.example
+kaggle.json
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
