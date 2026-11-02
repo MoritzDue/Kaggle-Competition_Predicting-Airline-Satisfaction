@@ -43,6 +43,6 @@ The combined features improved ROC AUC by **+0.001386** over the original LightG
 
 ## Acknowledgement
 
-The TabPFN-3.5 predictions were obtained from publicly shared Kaggle community resources. See this [related TFM discussion](https://www.kaggle.com/competitions/playground-series-s6e10/discussion/746363). The exact original prediction source could not be confirmed, and TabPFN was not trained as part of this project.
+The final ensemble uses publicly shared TabPFN-3.5 predictions from the Kaggle community (see [Tabular Foundation Models discussion](https://www.kaggle.com/competitions/playground-series-s6e10/discussion/746363)).
 
 *Leaderboard scores and final ranking are from the Kaggle submission history. Cross-validation and private leaderboard scores evaluate different data samples.*
