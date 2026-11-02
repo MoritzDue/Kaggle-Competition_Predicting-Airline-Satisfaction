@@ -1,6 +1,6 @@
 # Predicting Airline Satisfaction | Kaggle S6E10
 
-**Final rank: 1,249 / 3,735 (top 34%)** · **Private ROC AUC: 0.96177** · **Public ROC AUC: 0.96080**
+**Final rank: 1,249 / 3,735 (Top 34%)** · **Private ROC AUC: 0.96177** · **Public ROC AUC: 0.96080**
 
 [Competition](https://www.kaggle.com/competitions/playground-series-s6e10) · [Leaderboard](https://www.kaggle.com/competitions/playground-series-s6e10/leaderboard)
 
@@ -19,7 +19,7 @@ Predicted airline passenger satisfaction from tabular data (699,635 training row
 | + Smoothed target encoding | 0.959974 |
 | + Both features | **0.960196** |
 
-The combined features added **+0.001386 AUC** over the original LightGBM. Substituting that model into my tree/RealMLP blend increased OOF AUC from **0.959059 to 0.960059** (positive differences on all five folds).
+The combined features improved ROC AUC by **+0.001386** over the original LightGBM.
 
 ## Model progression
 
@@ -32,14 +32,17 @@ The combined features added **+0.001386 AUC** over the original LightGBM. Substi
 | Public TabPFN predictions alone | 0.96161 |
 | **LightGBM + public TabPFN logistic stack (final)** | **0.96177** |
 
-**Takeaway:** More extensive blending of my tree and neural models did not outperform the public TabPFN predictions. The small extra gain from combining TabPFN with my improved LightGBM shows that the locally engineered features still contributed useful complementary signal. The final gain over standalone TabPFN was modest and should not be overstated.
+**Takeaway:** More extensive blending of my tree and neural models did not outperform the public TabPFN predictions. The small additional gain from stacking TabPFN with my improved LightGBM suggests that the engineered features provided complementary signal, although the improvement over standalone TabPFN was modest.
 
 ## Files
 
-- [`notebooks/01_eda.ipynb`](notebooks/01_eda.ipynb) — exploratory analysis.
-- [`notebooks/04_cross_validation_ensemble.ipynb`](notebooks/04_cross_validation_ensemble.ipynb) — tree models and OOF ensembles.
-- [`notebooks/08_flight_distance_experiments.ipynb`](notebooks/08_flight_distance_experiments.ipynb) — feature-engineering ablation and test predictions.
-- [`notebooks/13_final_submission_lgb_tabpfn.ipynb`](notebooks/13_final_submission_lgb_tabpfn.ipynb) — stacking using saved prediction arrays.
+- [`01_eda.ipynb`](01_eda.ipynb) — exploratory analysis.
+- [`04_cross_validation_ensemble.ipynb`](04_cross_validation_ensemble.ipynb) — tree models and OOF ensembles.
+- [`08_flight_distance_experiments.ipynb`](08_flight_distance_experiments.ipynb) — feature-engineering ablation and test predictions.
+- [`13_final_submission_lgb_tabpfn.ipynb`](13_final_submission_lgb_tabpfn.ipynb) — logistic stacking using saved prediction arrays.
 
-**Remark:** The TabPFN arrays were sourced from publicly shared competition materials, associated with [this contemporaneous Kaggle TFM discussion](https://www.kaggle.com/competitions/playground-series-s6e10/discussion/746363)
-*Scores and rank above are from the participant's final Kaggle submission history; OOF experiments and private leaderboard scores evaluate different samples.*
+## Acknowledgement
+
+The TabPFN-3.5 predictions were obtained from publicly shared Kaggle community resources. See this [related TFM discussion](https://www.kaggle.com/competitions/playground-series-s6e10/discussion/746363). The exact original prediction source could not be confirmed, and TabPFN was not trained as part of this project.
+
+*Leaderboard scores and final ranking are from the Kaggle submission history. Cross-validation and private leaderboard scores evaluate different data samples.*
