@@ -26,15 +26,18 @@ The combined features improved ROC AUC by **+0.001386** over the original LightG
 | Approach | Private leaderboard ROC AUC |
 |---|---:|
 | CatBoost baseline | 0.95821 |
+| RealMLP | 0.95864 |
 | CatBoost + XGBoost + LightGBM ensemble | 0.95931 |
 | Flight Distance engineered blend | 0.96039 |
-| Optimised weighted ensemble | 0.96085 |
+| Improved LightGBM (67%) + RealMLP (33%) blend | 0.96085 |
 | Public TabPFN predictions alone | 0.96161 |
 | **LightGBM + public TabPFN logistic stack (final)** | **0.96177** |
 
-**Takeaway:** More extensive blending of my tree and neural models did not outperform the public TabPFN predictions. The small additional gain from stacking TabPFN with my improved LightGBM suggests that the engineered features provided complementary signal, although the improvement over standalone TabPFN was modest.
+**Takeaway:** More extensive blending of my tree and neural models did not outperform the public TabPFN predictions. Combining TabPFN with my improved LightGBM may have added a little complementary signal, although the final improvement was marginal (+0.00016 private AUC).
 
 ## Files
+
+Selected notebooks from the experimentation process; intermediate experiments are omitted.
 
 - [`01_eda.ipynb`](01_eda.ipynb) — exploratory analysis.
 - [`04_cross_validation_ensemble.ipynb`](04_cross_validation_ensemble.ipynb) — tree models and OOF ensembles.
@@ -45,4 +48,4 @@ The combined features improved ROC AUC by **+0.001386** over the original LightG
 
 The final ensemble uses publicly shared TabPFN-3.5 predictions from the Kaggle community (see [Tabular Foundation Models discussion](https://www.kaggle.com/competitions/playground-series-s6e10/discussion/746363)).
 
-*Leaderboard scores and final ranking are from the Kaggle submission history. Cross-validation and private leaderboard scores evaluate different data samples.*
+*Leaderboard scores and final ranking are from Kaggle submission history. Cross-validation and private leaderboard scores evaluate different data samples.*
