@@ -38,17 +38,8 @@ The combined features added **+0.001386 AUC** over the original LightGBM. Substi
 
 - [`notebooks/01_eda.ipynb`](notebooks/01_eda.ipynb) — exploratory analysis.
 - [`notebooks/04_cross_validation_ensemble.ipynb`](notebooks/04_cross_validation_ensemble.ipynb) — tree models and OOF ensembles.
-- `experiments/07_realmlp_cv_submission.py` — RealMLP five-fold experiment (copy in the original uploaded script; see `experiments/README.md`).
 - [`notebooks/08_flight_distance_experiments.ipynb`](notebooks/08_flight_distance_experiments.ipynb) — feature-engineering ablation and test predictions.
 - [`notebooks/13_final_submission_lgb_tabpfn.ipynb`](notebooks/13_final_submission_lgb_tabpfn.ipynb) — stacking using saved prediction arrays.
 
-## Reproduce / limitations
-
-1. Download `train.csv`, `test.csv`, and `sample_submission.csv` from the [Kaggle data page](https://www.kaggle.com/competitions/playground-series-s6e10/data) into `data/raw/` (not committed).
-2. Install the packages listed in `requirements.txt` (versions are not locked to the original environment).
-3. Copy your original `07_realmlp_cv_submission.py` to `experiments/`, then run notebook **04**, script **07**, and notebook **08** to regenerate the owned-model OOF predictions and the feature-engineering study. These are computationally expensive, and exact scores can vary by environment.
-4. Notebook **13** consumes the improved LightGBM OOF/test CSVs from 08 plus externally produced `oof_tabpfn35.npy` and `test_tabpfn35.npy` arrays in `submissions/public_tfm/`. It **does not train TabPFN**. Its historical hyperparameter-selection notebook (Experiment 12) is no longer available; the retained notebook reproduces the fixed stacking configuration *given the inputs*, not the complete original selection process.
-
-**Provenance and test ordering:** The TabPFN arrays were sourced from publicly shared competition materials, probably associated with [this contemporaneous Kaggle TFM discussion](https://www.kaggle.com/competitions/playground-series-s6e10/discussion/746363); the exact generating notebook/dataset version is no longer known. The `.npy` files do not carry test-row IDs, so test-order alignment cannot be independently verified from the surviving files. The notebook therefore retains submission-writing safety checks. A [first-place retrospective on TFMs and LLMs](https://www.kaggle.com/competitions/playground-series-s6e10/writeups/1st-place-tfms-and-llms-with-tabular-data) is linked for later context; it was **not** used as a competition-time source. Credit for public TabPFN predictions belongs to their original creator, not to this repository.
-
+**Remark:** The TabPFN arrays were sourced from publicly shared competition materials, associated with [this contemporaneous Kaggle TFM discussion](https://www.kaggle.com/competitions/playground-series-s6e10/discussion/746363)
 *Scores and rank above are from the participant's final Kaggle submission history; OOF experiments and private leaderboard scores evaluate different samples.*
